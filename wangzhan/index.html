@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+    <script src="socket.io.js"></script>
+    <script src="clent.js"></script>
+    <script>
+        var username, fromname, messages;
+        function denglu() {
+            username = document.getElementById("userid").value;
+            if (username != '') {
+                clent();
+            } else {
+                alert('用户名不能为空');
+            }
+        }
+        function fasong() {
+            fromname = document.getElementById("fromid").value;
+            messages = document.getElementById("messagesid").value;
+            if (fromname != "" && messages != "") {
+                var user = { username: username };
+                var duixiang = {
+                    form: user.username,
+                    messages: messages,
+                    to: fromname
+                };
+                const socket = io.connect('http://localhost:80');
+                socket.emit('chat', duixiang);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <span>当前在线人数:</span><span id="renshu">0</span>
+    <br/>
+    <span>用户名：</span>
+    <input type="text" id="userid" size="10" />
+    <input type="button" value="登录" onclick="denglu()">
+    <br /> <br /> <br />
+    <span>接收者：</span>
+    <input type="text" id="fromid" size="10" />
+    <span>内容：</span>
+    <input type="text" id="messagesid" size="20" />
+    <input type="button" value="发送" onclick="fasong()">
+    <p id="p"></p>
+</body>
+
+</html>
