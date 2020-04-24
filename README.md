@@ -4,3 +4,10 @@
 然后cd到项目目录
 执行命令：node server.js即可
 然后用浏览器打开127.0.0.1
+
+图片
+
+![tupian](https://github.com/liuchunchang/node_chat/blob/master/node.png)
+
+![tupian](https://github.com/liuchunchang/node_chat/blob/master/node_chat.png)
+
